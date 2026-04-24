@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payal Devendra Jarviya | Portfolio</title>
+
+    <!-- Google Fonts for Vintage Aesthetic -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Caveat:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg-cream: #e0d0b8;
+            /* Darker sepia cream */
+            --bg-paper: #c8b498;
+            /* Darker aged paper */
+            --text-dark: #3e2f24;
+            /* Faded ink brown/black */
+            --text-light: #3e2f24;
+            /* Lighter faded ink */
+            --accent-terra: #8f3a25;
+            /* Darker terracotta */
+            --accent-olive: #5b6348;
+            /* Darker olive */
+            --accent-gold: #9e7f42;
+            /* Darker gold/brass */
+
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-hand: 'Caveat', cursive;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            /* Deep historical paper texture with burnt edges and stains */
+            background-image:
+                radial-gradient(circle at center, transparent 40%, rgba(62, 47, 36, 0.4) 100%),
+                radial-gradient(circle at 15% 20%, rgba(143, 58, 37, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 85% 80%, rgba(91, 99, 72, 0.05) 0%, transparent 20%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* SECTION HEADINGS */
+        .section-header h2,
+        section>h2 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        /* SUBSECTIONS / SUBHEADINGS */
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CONTENT */
+        p,
+        li,
+        .tag,
+        .job-meta,
+        .date,
+        .stamp-text {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .nav-links a,
+        .contact-link {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .handwriting {
+            font-family: var(--font-hand);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            transform: rotate(-3deg);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--bg-cream), transparent);
+            z-index: 100;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--text-dark);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-terra);
+        }
+
+        /* --- LAYOUT STRUCTURE --- */
+        section {
+            padding: 2.5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 8rem;
+        }
+
+        .hero-collage {
+            position: relative;
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .polaroid-hero {
+            background: #eadecd;
+            /* Aged photo paper */
+            padding: 15px 15px 60px 15px;
+            box-shadow: 0 10px 30px rgba(62, 47, 36, 0.15);
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .polaroid-hero img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            filter: sepia(0.6) contrast(1.2) brightness(0.9);
+        }
+
+        .polaroid-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .tape {
+            position: absolute;
+            width: 120px;
+            height: 35px;
+            background: rgba(210, 195, 170, 0.85);
+            /* Darker tape */
+            backdrop-filter: blur(2px);
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            /* Jagged edge effect for tape */
+            clip-path: polygon(0 5%, 5% 0, 10% 8%, 15% 0, 20% 5%, 25% 0, 30% 7%, 35% 0, 40% 5%, 45% 0, 50% 6%, 55% 0, 60% 8%, 65% 0, 70% 5%, 75% 0, 80% 9%, 85% 0, 90% 5%, 95% 0, 100% 5%, 100% 95%, 95% 100%, 90% 92%, 85% 100%, 80% 95%, 75% 100%, 70% 93%, 65% 100%, 60% 95%, 55% 100%, 50% 94%, 45% 100%, 40% 95%, 35% 100%, 30% 92%, 25% 100%, 20% 95%, 15% 100%, 10% 92%, 5% 100%, 0 95%);
+        }
+
+        .background-paper {
+            position: absolute;
+            background: var(--bg-paper);
+            padding: 2rem;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.05);
+            /* Torn edge effect */
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1;
+        }
+
+        .bg-1 {
+            width: 350px;
+            height: 250px;
+            top: 20px;
+            left: -40px;
+            transform: rotate(-6deg);
+            background-color: #d1c0a8;
+        }
+
+        .bg-2 {
+            width: 250px;
+            height: 350px;
+            bottom: -30px;
+            right: -20px;
+            transform: rotate(8deg);
+            background-color: var(--accent-olive);
+            opacity: 0.15;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .handwriting {
+            color: var(--accent-terra);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .journal-page {
+            background: var(--bg-paper);
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transform: rotate(1deg);
+        }
+
+        /* Lined paper effect */
+        .journal-page::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(transparent, transparent 29px, rgba(0, 0, 0, 0.05) 30px);
+            pointer-events: none;
+        }
+
+        .job-title {
+            color: var(--accent-terra);
+            margin-bottom: 0.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .job-meta {
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .job-desc {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .job-desc li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .job-desc li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent-olive);
+        }
+
+        .stats-collage {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: #eadecd;
+            /* Aged paper */
+            padding: 2rem;
+            border: 1px solid rgba(62, 47, 36, 0.1);
+            box-shadow: 2px 4px 15px rgba(62, 47, 36, 0.08);
+            max-width: 300px;
+        }
+
+        .stat-card:nth-child(1) {
+            transform: rotate(-3deg) translateX(20px);
+        }
+
+        .stat-card:nth-child(2) {
+            transform: rotate(2deg) translateX(-10px);
+        }
+
+        .stat-card:nth-child(3) {
+            transform: rotate(-1deg) translateX(30px);
+        }
+
+        .stat-num {
+            color: var(--accent-olive);
+            line-height: 1;
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+
+        .polaroid-card {
+            background: #eadecd;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 8px 25px rgba(62, 47, 36, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .polaroid-card:nth-child(1) {
+            transform: rotate(-2deg);
+        }
+
+        .polaroid-card:nth-child(2) {
+            transform: rotate(1deg) translateY(20px);
+        }
+
+        .polaroid-card:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .polaroid-card:hover {
+            transform: translateY(-10px) rotate(0deg) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .polaroid-img-placeholder {
+            width: 100%;
+            height: 220px;
+            background-color: var(--bg-paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            /* Subtle inner shadow for depth */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .polaroid-content {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .polaroid-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .polaroid-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .tag {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: 20px;
+        }
+
+        /* --- SKILLS & EDUCATION --- */
+        .skills-edu-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .sticky-board {
+            background: #bfae94;
+            padding: 3rem;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(62, 47, 36, 0.15);
+            border-radius: 4px;
+        }
+
+        .board-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .sticky-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .sticky-note {
+            background: #eadecd;
+            padding: 1.5rem;
+            box-shadow: 2px 2px 8px rgba(62, 47, 36, 0.1);
+            position: relative;
+            border: 1px solid rgba(62, 47, 36, 0.2);
+            border-top: 4px solid var(--accent-terra);
+            transition: all 0.3s ease;
+        }
+
+        .sticky-note:nth-child(even) {
+            border-top-color: var(--accent-olive);
+        }
+
+        .sticky-note:nth-child(odd) {
+            border-top-color: var(--accent-gold);
+        }
+
+        .sticky-note:hover {
+            transform: scale(1.02);
+            box-shadow: 4px 6px 12px rgba(62, 47, 36, 0.15);
+            z-index: 5;
+        }
+
+        .sticky-note::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #2a1f16;
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.8), 0 1px 1px rgba(255, 255, 255, 0.4);
+        }
+
+        .sticky-note h4 {
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 0.3rem;
+        }
+
+        .sticky-note p {
+            color: var(--text-light);
+        }
+
+        /* Education Ticket Style */
+        .edu-ticket {
+            background: transparent;
+            padding: 2rem;
+            border: 1px dashed var(--text-light);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .edu-ticket::before,
+        .edu-ticket::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-cream);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            border: 1px dashed var(--text-light);
+        }
+
+        .edu-ticket::before {
+            left: -10px;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .edu-ticket::after {
+            right: -10px;
+            border-left-color: transparent;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .edu-ticket h3 {
+            color: var(--accent-terra);
+        }
+
+        .edu-ticket p {
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .edu-ticket .date {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-olive);
+            transform: rotate(-2deg);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact {
+            text-align: center;
+            padding: 3rem 5%;
+            background: var(--bg-paper);
+            margin-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .stamp {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-terra);
+            position: relative;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            opacity: 0.7;
+        }
+
+        .stamp::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            border: 1px solid var(--accent-terra);
+            border-style: dashed;
+        }
+
+        .stamp-text {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-terra);
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-terra);
+            border-bottom-color: var(--accent-terra);
+        }
+
+        @media (max-width: 900px) {
+
+            .experience-grid,
+            .skills-edu-wrap,
+            .projects-split {
+                grid-template-columns: 1fr !important;
+                gap: 2rem;
+            }
+
+            .polaroid-hero img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .nav-links {
+                display: none;
+                /* simple mobile nav approach for now */
+            }
+        }
+
+        /* TORN PAPER AESTHETIC OVERRIDES */
+        .polaroid-card,
+        .journal-page,
+        .sticky-note,
+        .stat-card,
+        .edu-ticket,
+        .torn-paper {
+            background-color: #e8dccb !important;
+            /* Rich parchment */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E") !important;
+            box-shadow: inset 0 0 40px rgba(62, 47, 36, 0.2) !important;
+            /* Burnt edges */
+            clip-path: polygon(0% 1%, 2% 0%, 4% 2%, 6% 0%, 8% 1%, 10% 0%, 12% 2%, 14% 0%, 16% 1%, 18% 0%,
+                    20% 2%, 22% 0%, 24% 1%, 26% 0%, 28% 2%, 30% 0%, 32% 1%, 34% 0%, 36% 2%, 38% 0%,
+                    40% 1%, 42% 0%, 44% 2%, 46% 0%, 48% 1%, 50% 0%, 52% 2%, 54% 0%, 56% 1%, 58% 0%,
+                    60% 2%, 62% 0%, 64% 1%, 66% 0%, 68% 2%, 70% 0%, 72% 1%, 74% 0%, 76% 2%, 78% 0%,
+                    80% 1%, 82% 0%, 84% 2%, 86% 0%, 88% 1%, 90% 0%, 92% 2%, 94% 0%, 96% 1%, 98% 0%, 100% 1%,
+                    99% 98%, 98% 100%, 96% 98%, 94% 100%, 92% 99%, 90% 100%, 88% 98%, 86% 100%, 84% 99%, 82% 100%,
+                    80% 98%, 78% 100%, 76% 99%, 74% 100%, 72% 98%, 70% 100%, 68% 99%, 66% 100%, 64% 98%, 62% 100%,
+                    60% 99%, 58% 100%, 56% 98%, 54% 100%, 52% 99%, 50% 100%, 48% 98%, 46% 100%, 44% 99%, 42% 100%,
+                    40% 98%, 38% 100%, 36% 99%, 34% 100%, 32% 98%, 30% 100%, 28% 99%, 26% 100%, 24% 98%, 22% 100%,
+                    20% 99%, 18% 100%, 16% 98%, 14% 100%, 12% 99%, 10% 100%, 8% 98%, 6% 100%, 4% 99%, 2% 100%, 0% 98%) !important;
+            filter: drop-shadow(0 10px 20px rgba(62, 47, 36, 0.15)) !important;
+            border: none !important;
+            transform: none !important;
+            border-radius: 0 !important;
+        }
+
+        .polaroid-card:hover,
+        .stat-card:hover,
+        .sticky-note:hover,
+        .edu-ticket:hover {
+            transform: translateY(-5px) !important;
+            filter: drop-shadow(0 15px 30px rgba(62, 47, 36, 0.25)) !important;
+            z-index: 10;
+        }
+
+        /* Hide tape entirely */
+        .tape {
+            display: none !important;
+        }
+
+        /* Remove sticky note top borders and pinhole since we are torn paper now */
+        .sticky-note::before {
+            display: none !important;
+        }
+
+        /* Remove journal lined paper since it clashes with the texture */
+        .journal-page::after {
+            display: none !important;
+        }
+
+        /* Make body slightly darker and textured so the torn paper pops */
+        body {
+            background-color: #c9b49a !important;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E") !important;
+        }
+
+        /* Match the typography style in the slide */
+        h1,
+        h2,
+        .section-header .handwriting,
+        .board-title .handwriting {
+            color: #4a3320 !important;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Remove polaroid photo placeholder since it doesn't match the new text-heavy torn paper aesthetic */
+        .polaroid-img-placeholder {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">P. Jarviya</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <style>
+        .vintage-hero {
+            position: relative;
+            padding: 5vh 1rem 10vh 1rem;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid rgba(62, 47, 36, 0.2);
+            background-color: #d1c0a8;
+            margin: 100px auto 2rem auto; /* Auto margin centers it perfectly */
+            max-width: 95%; /* Ensures it doesn't touch the edges */
+            border-radius: 4px;
+        }
+
+
+
+        .vintage-corner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M15 5 Q15 15 5 15 Q15 15 15 25 Q15 15 25 15 Q15 15 15 5 Z' fill='none' stroke='%233e2f24' stroke-width='1.5'/%3E%3Cline x1='15' y1='25' x2='15' y2='100' stroke='%233e2f24' stroke-width='1.5'/%3E%3Cline x1='25' y1='15' x2='100' y2='15' stroke='%233e2f24' stroke-width='1.5'/%3E%3Cline x1='25' y1='100' x2='25' y2='25' stroke='%233e2f24' stroke-width='0.5'/%3E%3Cline x1='25' y1='25' x2='100' y2='25' stroke='%233e2f24' stroke-width='0.5'/%3E%3Cpath d='M25 25 Q20 20 15 15' fill='none' stroke='%233e2f24' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: 2;
+        }
+
+        .vintage-corner.top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .vintage-corner.top-right {
+            top: 20px;
+            right: 20px;
+            transform: scaleX(-1);
+        }
+
+        .vintage-corner.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            transform: scaleY(-1);
+        }
+
+        .vintage-corner.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            transform: scale(-1);
+        }
+
+        .hero-title-block {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            margin-top: 2rem; /* Reduced from 150px */
+        }
+
+        .hero-title-block h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #3e2f24 !important;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: none !important;
+        }
+
+        .hero-title-block p {
+            font-weight: bold;
+            color: #3e2f24;
+            margin-top: 2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+
+    <section class="vintage-hero" id="about">
+        <div class="vintage-corner top-left"></div>
+        <div class="vintage-corner top-right"></div>
+        <div class="vintage-corner bottom-left"></div>
+        <div class="vintage-corner bottom-right"></div>
+
+        <div class="hero-title-block fade-up">
+            <h1>Payal Devendra Jarviya</h1>
+            <p>Data Strategist - Business Analyst</p>
+        </div>
+
+        <div style="max-width: 900px; display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; align-items: center; margin-top: 2rem; padding: 3rem; position: relative; z-index: 5; background-color: #e8dccb !important;"
+            class="fade-up torn-paper">
+
+            <div
+                style="flex-shrink: 0; width: 220px; height: 280px; border-radius: 4px; overflow: hidden; border: 8px solid #fdfbf7; box-shadow: 0 8px 25px rgba(62,47,36,0.25); transform: rotate(-3deg);">
+                <img src="avatar.png" alt="Payal Jarviya"
+                    style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.4) contrast(1.2) brightness(0.9);">
+            </div>
+
+            <div style="flex: 1; min-width: 300px; text-align: justify; ">
+                <p style="color: #3e2f24; line-height: 1.8; font-weight: 500; margin: 0;">MBA candidate at SKK GSB
+                    Sungkyunkwan University, Seoul, specializing in Artificial Intelligence (AI) and
+                    Business Analytics and Marketing Analytics, with 4 years of enterprise Information Technology (IT)
+                    consulting experience at NTT DATA North America. Demonstrated expertise in structured problem
+                    solving,
+                    business process analysis, data-driven decision making, requirement analysis, and cross-functional
+                    stakeholder management within large-scale Enterprise Resource Planning (ERP) environments. Strong
+                    academic foundation in Electronics and Telecommunication Engineering (8.81 CGPA) complemented by a
+                    published research paper, Oracle Cloud and AI certifications, and applied analytics simulations with
+                    Deloitte and Tata Group. Seeking to apply a unique combination of technology consulting experience,
+                    advanced analytics education, and strategic business thinking in a management consulting career.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header fade-up">
+            <div class="handwriting">My Journey</div>
+            <h2>Professional Experience</h2>
+        </div>
+
+        <div class="experience-grid">
+            <div class="journal-page fade-up" style="grid-column: 1 / -1;">
+                <div class="tape"
+                    style="top: -10px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 150px;"></div>
+
+                <!-- Role 1 -->
+                <div style="margin-bottom: 3rem;">
+                    <h3 class="job-title">Information Technology Analyst</h3>
+                    <p class="job-meta">NTT DATA North America • Oct 2024 – Aug 2025</p>
+                    <ul class="job-desc">
+                        <li>Resolved 20–30+ user-reported issues per release cycle within large-scale PeopleSoft ERP
+                            environments, ensuring full SLA compliance and system stability for global enterprise
+                            clients.</li>
+                        <li>Designed and deployed application-level solutions in collaboration with 10+ member
+                            cross-functional teams, directly improving supply chain management and financial reporting
+                            workflows.</li>
+                        <li>Translated complex business pain points into structured, system-level technical solutions
+                            through rigorous problem analysis and stakeholder consultation.</li>
+                        <li>Prepared functional documentation, impact analysis reports, and change records for multiple
+                            quarterly releases; recognized as PeopleSoft Technical Advisor by practice leadership.</li>
+                        <li>Earned multiple internal NTT DATA Learning and Certification Institute certifications during
+                            tenure, including advanced PeopleSoft application certifications.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 2 -->
+                <div style="margin-bottom: 3rem;">
+                    <h3 class="job-title">Information Technology Senior Associate</h3>
+                    <p class="job-meta">NTT DATA North America • Nov 2021 – Sep 2024</p>
+                    <ul class="job-desc">
+                        <li>Delivered end-to-end consulting support for PeopleSoft Financials and Supply Chain
+                            Management (FSCM) modules, optimizing procurement workflows, financial reporting processes,
+                            and operational controls across multiple industries.</li>
+                        <li>Collaborated with 5–8 cross-functional business and technical stakeholders per project to
+                            conduct structured requirement analysis, map current-state workflows, and translate business
+                            needs into technical specifications.</li>
+                        <li>Supported User Acceptance Testing (UAT), regression testing, and system validation for
+                            multiple change requests per quarter; authored functional documentation and change
+                            management records.</li>
+                        <li>Identified recurring process gaps through systematic analysis of system outputs and data,
+                            driving continuous process improvement initiatives and reducing operational inefficiencies.
+                        </li>
+                        <li>Earned PeopleSoft Financials and Supply Chain Management (FSCM) Basic Certification;
+                            mentored junior associates on Application Designer and PeopleCode development best
+                            practices.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 3 -->
+                <div>
+                    <h3 class="job-title">Technical Graduate Trainee</h3>
+                    <p class="job-meta">NTT DATA North America • Sep 2021 – Nov 2021</p>
+                    <ul class="job-desc">
+                        <li>Completed PeopleSoft Technical Basic Certification covering PeopleSoft architecture,
+                            Application Designer, PeopleCode, and SQL (Structured Query Language) fundamentals.</li>
+                        <li>Integrated into live client project within first 90 days of joining, demonstrating strong
+                            learning agility and ability to apply technical knowledge rapidly in a professional
+                            enterprise consulting environment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header fade-up">
+            <div class="handwriting">Recent Work</div>
+            <h2>Portfolio Projects</h2>
+        </div>
+
+        <div class="projects-split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+
+            <!-- Marketing Column -->
+            <div class="project-column" style="display: flex; flex-direction: column;">
+                <h3
+                    style="color: var(--accent-olive); margin-bottom: 2rem; border-bottom: 1px dashed var(--accent-gold); padding-bottom: 0.5rem; text-align: center;">
+                    Marketing Projects</h3>
+
+                <div class="projects-grid" style="display: flex; flex-direction: column; gap: 3rem; flex: 1;">
+                    <!-- Placeholder Project -->
+                    <div class="polaroid-card fade-up" style="opacity: 0.8; transform: rotate(2deg);">
+                        <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%) rotate(-2deg);">
+                        </div>
+                        <div class="polaroid-img-placeholder"
+                            style="color: var(--text-light); background: rgba(0,0,0,0.02);">⏳</div>
+                        <div class="polaroid-content">
+                            <h3>Marketing Strategy Simulation</h3>
+                            <div style="text-align: left; margin-bottom: 1rem; color: var(--text-light);">
+                                <p>• Strategic brand positioning and consumer behavior analysis.</p>
+                                <p>• Go-to-market planning and market segmentation.</p>
+                                <p style="text-align: center; margin-top: 1rem; color: var(--accent-terra);">
+                                    Currently In Progress...</p>
+                            </div>
+                            <div class="tags">
+                                <span class="tag"
+                                    style="border-color: var(--text-light); color: var(--text-light);">Strategy</span>
+                                <span class="tag"
+                                    style="border-color: var(--text-light); color: var(--text-light);">Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <details style="margin-top: 1rem;">
+                    <summary
+                        style="cursor: pointer; color: var(--text-light); outline: none; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
+                        ► Old Projects (Click to see)</summary>
+                    <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 2rem;">
+                        <p style="color: var(--text-light); text-align: center; font-style: italic;">
+                            No older projects to display.</p>
+                    </div>
+                </details>
+            </div>
+
+        <!-- AI & Analytics Column -->
+        <div class="project-column" style="display: flex; flex-direction: column;">
+            <h3
+                style="color: var(--accent-terra); margin-bottom: 2rem; border-bottom: 1px dashed var(--accent-gold); padding-bottom: 0.5rem; text-align: center;">
+                AI & Business Analytics</h3>
+
+            <div class="projects-grid" style="display: flex; flex-direction: column; gap: 3rem; flex: 1;">
+
+                <!-- New Customer Churn Project -->
+                <div class="polaroid-card fade-up">
+                    <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%) rotate(1deg);"></div>
+                    <div class="polaroid-img-placeholder" style="color: var(--accent-terra);">📈</div>
+                    <div class="polaroid-content">
+                        <h3>Customer Churn Analysis</h3>
+                        <div style="text-align: left; margin-bottom: 1rem; color: var(--text-dark);">
+                            <p>• Regression-based customer churn analysis using business forecasting techniques.</p>
+                            <p>• Analyzed IBM Telco dataset to uncover key retention drivers.</p>
+                            <p>• Built Logistic Regression model achieving 0.84 ROC-AUC.</p>
+                        </div>
+                        <p style="font-style: italic; margin-bottom: 1rem;">
+                            <a href="https://github.com/payaljarviya/customer-churn-analysis" target="_blank"
+                                style="color: var(--accent-terra); text-decoration: underline;">View on GitHub</a>
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <details style="margin-top: 1rem;">
+                <summary
+                        style="cursor: pointer; color: var(--text-light); outline: none; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
+                        ► Old Projects (Click to see)</summary>
+                    <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 2rem;">
+
+                        <!-- Project 1 -->
+                        <div class="polaroid-card fade-up">
+                            <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%);"></div>
+                            <div class="polaroid-img-placeholder" style="color: var(--accent-terra);">🚦</div>
+                            <div class="polaroid-content">
+                                <h3>Traffic Signal Surveillance System</h3>
+                                <div style="text-align: left; margin-bottom: 1rem; color: var(--text-dark);">
+                                    <p>• Led a 5-member team to prototype an automated traffic violation detection
+                                        system.</p>
+                                    <p>• Architecture: CCTV and PTZ cameras triggered by IR sensors, Raspberry Pi, and
+                                        Google Cloud
+                                        Vision API (ANPR) decoding license plates in &lt;50ms.</p>
+                                    <p>• Applied end-to-end research methodology from problem identification to hardware
+                                        prototyping
+                                        and peer-reviewed publication.</p>
+                                </div>
+                                <p style="font-style: italic; margin-bottom: 1rem;">Published in
+                                    IJSREM (March
+                                    2020) | ISSN: 2582-3930 | <a href="Traffic_Signal_Surveillance_System.pdf"
+                                        target="_blank"
+                                        style="color: var(--accent-terra); text-decoration: underline;">View PDF</a></p>
+                                <div class="tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Google Cloud API</span>
+                                    <span class="tag">Raspberry Pi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="polaroid-card fade-up">
+                            <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%) rotate(-3deg);">
+                            </div>
+                            <div class="polaroid-img-placeholder" style="color: var(--accent-gold);">🧠</div>
+                            <div class="polaroid-content">
+                                <h3>Tata GenAI Simulation</h3>
+                                <p>Forage virtual experience — applied generative AI for business strategy, predictive
+                                    modelling,
+                                    and ethics governance.</p>
+                                <div class="tags">
+                                    <span class="tag">GenAI</span>
+                                    <span class="tag">LLM</span>
+                                    <span class="tag">Strategy</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="polaroid-card fade-up">
+                            <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%) rotate(2deg);">
+                            </div>
+                            <div class="polaroid-img-placeholder" style="color: var(--accent-olive);">📊</div>
+                            <div class="polaroid-content">
+                                <h3>Deloitte Analytics</h3>
+                                <p>Interactive Tableau dashboards and forensic data analysis revealing operational
+                                    insights for
+                                    cross-functional clients.</p>
+                                <div class="tags">
+                                    <span class="tag">Tableau</span>
+                                    <span class="tag">Data Viz</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW GITHUB SECTION -->
+    <section id="github" style="padding-top: 2rem;">
+        <div class="section-header fade-up" style="margin-bottom: 2rem;">
+            <div class="handwriting">Code & Repositories</div>
+            <h2>GitHub Profile</h2>
+        </div>
+
+        <div class="fade-up" style="display: flex; justify-content: center;">
+            <div class="journal-page"
+                style="width: 100%; max-width: 600px; padding: 2.5rem; display: flex; align-items: center; gap: 2.5rem; transform: rotate(1deg);">
+                <div class="tape" style="top: -10px; right: 20px; transform: rotate(5deg); width: 80px;"></div>
+
+                <div
+                    style="flex-shrink: 0; width: 100px; height: 130px; border-radius: 2px; overflow: hidden; border: 4px solid #fdfbf7; box-shadow: 0 4px 15px rgba(62,47,36,0.25); transform: rotate(-3deg);">
+                    <img src="github_profile.png" alt="Payal Jarviya"
+                        style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.4) contrast(1.2) brightness(0.9);">
+                </div>
+
+                <div style="text-align: left;">
+                    <h3 style="margin-bottom: 0.2rem; color: var(--accent-terra);">
+                        @payaljarviya</h3>
+                    <p style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.4;">
+                        Data Science, Analytics & Forecasting Repositories</p>
+                    <a href="https://github.com/payaljarviya" target="_blank"
+                        style="display: inline-block; padding: 0.6rem 1.2rem; border: 1px solid var(--accent-olive); color: var(--accent-olive); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">Explore
+                        GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="sticky-board fade-up" style="max-width: 900px; margin: 0 auto;">
+            <div class="board-title">
+                <h2>Skills Matrix</h2>
+                <div class="handwriting">Tools & Strategy</div>
+            </div>
+
+            <div class="sticky-grid">
+                <div class="sticky-note">
+                    <h4>Strategy</h4>
+                    <p>Business Strategy, Data-Driven Decision Making, Requirements Analysis, Change Mgmt</p>
+                </div>
+                <div class="sticky-note">
+                    <h4>AI & Analytics</h4>
+                    <p>GenAI, Business Analytics, Predictive Modelling, Machine Learning, EDA</p>
+                </div>
+                <div class="sticky-note">
+                    <h4>Marketing</h4>
+                    <p>Brand Management, Go-to-Market Planning, Market Segmentation, Consumer Behavior</p>
+                </div>
+                <div class="sticky-note">
+                    <h4>Finance</h4>
+                    <p>Corporate Financial Reporting, Supply Chain Finance, Procurement Process Mgmt</p>
+                </div>
+                <div class="sticky-note">
+                    <h4>Tech Systems</h4>
+                    <p>PeopleSoft ERP, Oracle Cloud, Python, SQL, Java, Raspberry Pi, API Integration</p>
+                </div>
+                <div class="sticky-note">
+                    <h4>Project Mgmt</h4>
+                    <p>PMI Certified, UAT, Regression Testing, Functional Documentation, Risk Assessment</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="education fade-up" style="max-width: 900px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+                <h2>Education</h2>
+                <div class="handwriting">Academic Background</div>
+            </div>
+
+            <div class="edu-ticket">
+                <span class="date">Aug 2025 – Feb 2027</span>
+                <h3>Master of Business Administration (MBA)</h3>
+                <p>SKK GSB, Sungkyunkwan University | Seoul, South Korea</p>
+                <p style="margin-top: 10px; font-style: italic;">Specializations: Artificial Intelligence & Business
+                    Analytics | Marketing Analytics</p>
+            </div>
+
+            <div class="edu-ticket">
+                <span class="date">Aug 2016 – Nov 2020</span>
+                <h3>Bachelor of Engineering (B.E.)</h3>
+                <p>Nagpur Institute of Technology | Nagpur, India</p>
+                <p style="margin-top: 10px; font-style: italic;">Electronics and Telecommunication Engineering •
+                    CGPA: 8.81</p>
+                <p style="margin-top: 5px; color: var(--text-dark);">Honours: Excellence Award
+                    for Academic & Extracurriculars (2019), President & Deputy General Secretary</p>
+            </div>
+
+            <div class="torn-paper" style="margin-top: 3rem; padding: 2.5rem;">
+                <h3 style="margin-bottom: 1rem;">Certifications</h3>
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--accent-terra);">Data
+                        Analytics & AI</h4>
+                    <ul style="list-style-type: square; margin-left: 1.5rem; color: var(--text-dark); ">
+                        <li>Deloitte Australia Data Analytics Job Simulation | Forage</li>
+                        <li>Tata Group GenAI Powered Data Analytics Job Simulation | Forage</li>
+                        <li>Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate</li>
+                        <li>Oracle Cloud Infrastructure 2023 Certified Foundation Associate</li>
+                        <li>Oracle Cloud Data Management 2023 Certified Foundations Associate</li>
+                        <li>Introduction to Programming with Python | Kaggle</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--accent-terra);">Business
+                        & Process Management</h4>
+                    <ul style="list-style-type: square; margin-left: 1.5rem; color: var(--text-dark); ">
+                        <li>AI for Managers by Microsoft and LinkedIn</li>
+                        <li>Become an AI-Powered Manager | LinkedIn Learning</li>
+                        <li>Business Analysis and Process Management | Coursera</li>
+                        <li>Project Management Foundations (PMI and NASBA Certified) | LinkedIn Learning</li>
+                        <li>Java Programming | Great Learning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="torn-paper" style="margin-top: 3rem; padding: 2.5rem;">
+                <h3 style="margin-bottom: 1rem;">Honours & Volunteering</h3>
+                <ul style="list-style-type: square; margin-left: 1.5rem; color: var(--text-dark); ">
+                    <li style="margin-bottom: 0.5rem;"><strong>Excellence Award (2019):</strong> Outstanding
+                        academic and extracurricular performance.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>President & Deputy General Secretary
+                            (2018-2020):</strong> Led initiatives for 200+ students.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>NSS Volunteer (2016-2020):</strong> 3+ years active
+                        community service, blood drives, and rural outreach.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>NCC Cadet (2013-2014):</strong> Trained in
+                        leadership, discipline, and military-style camps.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Organiser:</strong> Orange City Drone Racing League
+                        logistics and event operations.</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="stamp">
+            <span class="stamp-text">Seoul<br>South Korea</span>
+        </div>
+
+        <h2>Personal Details</h2>
+        <div class="torn-paper"
+            style="max-width: 600px; margin: 1.5rem auto; color: var(--text-dark); text-align: left; padding: 3rem;">
+            <p style="margin-bottom: 0.5rem;"><strong>Languages:</strong> English (Professional Fluency) | Hindi
+                (Native) | Marathi (Native) | Korean (Beginner)</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Nationality:</strong> Indian</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Current Location:</strong> Seoul, South Korea (MBA studies at SKK
+                GSB)</p>
+            <p><strong>Availability:</strong> Available for internships, consulting programs, and full-time roles from
+                February 2027; open to India-based and international opportunities.</p>
+        </div>
+
+        <div class="contact-links" style="margin-top: 3rem;">
+            <a href="mailto:payaljarviya123@gmail.com" class="contact-link">payaljarviya123@gmail.com</a>
+            <a href="https://linkedin.com/in/payal-jarviya" target="_blank" class="contact-link">LinkedIn Profile</a>
+        </div>
+    </section>
+
+    <script>
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        const fadeElements = document.querySelectorAll('.fade-up');
+
+        fadeElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%", // Trigger when the top of the element is 85% down the viewport
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
+        });
+
+        // Add subtle continuous floating animation to the hero collage elements
+        gsap.to('.bg-1', {
+            y: 10,
+            rotation: -5,
+            duration: 4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        gsap.to('.bg-2', {
+            y: -10,
+            rotation: 9,
+            duration: 5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        // Parallax effect on hero
+        gsap.to('.hero-collage', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            },
+            y: 100
+        });
+    </script>
+</body>
+
+</html>
