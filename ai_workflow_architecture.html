@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0f;
+    font-family: 'DM Sans', sans-serif;
+    color: #e8e8f0;
+    min-height: 100vh;
+    padding: 40px 32px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .header h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #6ee7b7;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .header h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .header p {
+    font-size: 12px;
+    color: #555;
+    margin-top: 8px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .hub-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .hub {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1.5px solid #6ee7b7;
+    border-radius: 16px;
+    padding: 22px 40px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(110,231,183,0.15);
+    min-width: 240px;
+  }
+
+  .hub-icon { font-size: 30px; margin-bottom: 8px; }
+  .hub-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6ee7b7;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hub-sub {
+    font-size: 11px;
+    color: #777;
+    margin-top: 4px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .connector-center {
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .pipelines {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .pipeline {
+    border-radius: 14px;
+    padding: 22px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pipeline::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .pipeline.green  { border-color: #1a3a2a; background: #0d1f17; }
+  .pipeline.green::after  { background: linear-gradient(90deg, #6ee7b7, #10b981); }
+  .pipeline.blue   { border-color: #1a2a3a; background: #0d1720; }
+  .pipeline.blue::after   { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
+  .pipeline.purple { border-color: #2a1a3a; background: #180d20; }
+  .pipeline.purple::after { background: linear-gradient(90deg, #c084fc, #8b5cf6); }
+  .pipeline.amber  { border-color: #3a2a0d; background: #1f1700; }
+  .pipeline.amber::after  { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+
+  .pipeline-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .pipeline-icon { font-size: 20px; }
+
+  .pipeline-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    flex: 1;
+  }
+
+  .pipeline-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .green  .pipeline-tag { background: rgba(110,231,183,0.1); color: #6ee7b7; border: 1px solid rgba(110,231,183,0.2); }
+  .blue   .pipeline-tag { background: rgba(96,165,250,0.1);  color: #60a5fa; border: 1px solid rgba(96,165,250,0.2); }
+  .purple .pipeline-tag { background: rgba(192,132,252,0.1); color: #c084fc; border: 1px solid rgba(192,132,252,0.2); }
+  .amber  .pipeline-tag { background: rgba(251,191,36,0.1);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+
+  .flow { display: flex; flex-direction: column; gap: 8px; }
+
+  .step { display: flex; align-items: flex-start; gap: 12px; }
+
+  .step-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 5px;
+  }
+
+  .step-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .step-connector {
+    width: 1px;
+    height: 16px;
+    margin-top: 3px;
+    opacity: 0.25;
+  }
+
+  .green  .step-dot { background: #6ee7b7; }
+  .green  .step-connector { background: #6ee7b7; }
+  .blue   .step-dot { background: #60a5fa; }
+  .blue   .step-connector { background: #60a5fa; }
+  .purple .step-dot { background: #c084fc; }
+  .purple .step-connector { background: #c084fc; }
+  .amber  .step-dot { background: #fbbf24; }
+  .amber  .step-connector { background: #fbbf24; }
+
+  .step-content { flex: 1; }
+
+  .step-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.45;
+    margin-bottom: 2px;
+  }
+
+  .step-text {
+    font-size: 12.5px;
+    color: #bbb;
+    line-height: 1.45;
+  }
+
+  .output-box {
+    margin-top: 16px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .green  .output-box { background: rgba(110,231,183,0.07); border: 1px solid rgba(110,231,183,0.18); color: #6ee7b7; }
+  .blue   .output-box { background: rgba(96,165,250,0.07);  border: 1px solid rgba(96,165,250,0.18);  color: #60a5fa; }
+  .purple .output-box { background: rgba(192,132,252,0.07); border: 1px solid rgba(192,132,252,0.18); color: #c084fc; }
+  .amber  .output-box { background: rgba(251,191,36,0.07);  border: 1px solid rgba(251,191,36,0.18);  color: #fbbf24; }
+
+  .output-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 4px;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #181818;
+    flex-wrap: wrap;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    color: #6ee7b7;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #444;
+    margin-top: 4px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .watermark {
+    text-align: center;
+    margin-top: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: #2a2a2a;
+    letter-spacing: 0.15em;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>System Architecture</h1>
+  <h2>Personal AI Workflow System</h2>
+  <p>Built by Payal Jarviya &nbsp;·&nbsp; Claude (Cowork) + Google Apps Script</p>
+</div>
+
+<div class="hub-row">
+  <div class="hub">
+    <div class="hub-icon">🧠</div>
+    <div class="hub-title">Claude AI (Cowork)</div>
+    <div class="hub-sub">Central Orchestration Layer</div>
+  </div>
+</div>
+
+<div class="connector-center">
+  <svg width="2" height="32" viewBox="0 0 2 32" xmlns="http://www.w3.org/2000/svg">
+    <line x1="1" y1="0" x2="1" y2="32" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+  </svg>
+</div>
+
+<div class="pipelines">
+
+  <div class="pipeline green">
+    <div class="pipeline-header">
+      <span class="pipeline-icon">🔍</span>
+      <span class="pipeline-title">Job Search Pipeline</span>
+      <span class="pipeline-tag">Active</span>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Input</div>
+          <div class="step-text">Job description pasted into Claude workspace</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Micro-task 1</div>
+          <div class="step-text">Keyword extraction + role-fit scoring vs. resume</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Micro-task 2</div>
+          <div class="step-text">Tailored CV bullet generation per role</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-label">Micro-task 3</div>
+          <div class="step-text">Cover letter draft with brand-voice consistency</div>
+        </div>
+      </div>
+    </div>
+    <div class="output-box">
+      <div class="output-label">⚡ Output</div>
+      Application-ready package in &lt;5 minutes
+    </div>
+  </div>
+
+  <div class="pipeline blue">
+    <div class="pipeline-header">
+      <span class="pipeline-icon">📬</span>
+      <span class="pipeline-title">Gmail Automation</span>
+      <span class="pipeline-tag">Automated</span>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Input</div>
+          <div class="step-text">Raw inbox with unstructured emails</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Script Layer</div>
+          <div class="step-text">Google Apps Script taxonomy with custom label rules</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">AI Layer</div>
+          <div class="step-text">Claude prioritizes, drafts replies, flags action items</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-label">System</div>
+          <div class="step-text">Inbox-zero architecture with auto-routing</div>
+        </div>
+      </div>
+    </div>
+    <div class="output-box">
+      <div class="output-label">⚡ Output</div>
+      Structured inbox · zero manual sorting
+    </div>
+  </div>
+
+  <div class="pipeline purple">
+    <div class="pipeline-header">
+      <span class="pipeline-icon">🇰🇷</span>
+      <span class="pipeline-title">TOPIK Study System</span>
+      <span class="pipeline-tag">AI-Built</span>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Input</div>
+          <div class="step-text">Past TOPIK exam sets (35th, 41st, 47th)</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Analysis</div>
+          <div class="step-text">Logical connector extraction + frequency analysis</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Output 1</div>
+          <div class="step-text">Interactive flashcard app (300 vocab words)</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-label">Output 2</div>
+          <div class="step-text">Published vocabulary book (Amazon KDP)</div>
+        </div>
+      </div>
+    </div>
+    <div class="output-box">
+      <div class="output-label">⚡ Output</div>
+      TOPIK Level 4 preparation · self-published resource
+    </div>
+  </div>
+
+  <div class="pipeline amber">
+    <div class="pipeline-header">
+      <span class="pipeline-icon">⚙️</span>
+      <span class="pipeline-title">Task Management</span>
+      <span class="pipeline-tag">Micro-task</span>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Problem</div>
+          <div class="step-text">Cowork connection timeouts on large batch tasks</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Solution</div>
+          <div class="step-text">Redesigned into micro-task architecture (atomic steps)</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+        <div class="step-content">
+          <div class="step-label">Method</div>
+          <div class="step-text">Each task scoped to single, resumable action</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-label">Result</div>
+          <div class="step-text">Zero failed runs · full pipeline reliability</div>
+        </div>
+      </div>
+    </div>
+    <div class="output-box">
+      <div class="output-label">⚡ Output</div>
+      Reliable autonomous execution at scale
+    </div>
+  </div>
+
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Pipelines Built</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Roles Applied</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">&lt;5 min</div>
+    <div class="stat-label">Per Application</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">300+</div>
+    <div class="stat-label">Vocab Words Generated</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Manual Sorting</div>
+  </div>
+</div>
+
+<div class="watermark">PAYAL JARVIYA · AI WORKFLOW SYSTEM · 2025–2026</div>
+
+</body>
+</html>
