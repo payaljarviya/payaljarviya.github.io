@@ -694,7 +694,12 @@
                 font-size: 1.1rem !important;
             }
 
-            p, li, .tag, .job-meta, .date, .stamp-text {
+            p,
+            li,
+            .tag,
+            .job-meta,
+            .date,
+            .stamp-text {
                 font-size: 1rem !important;
             }
 
@@ -724,10 +729,25 @@
                 height: 60px !important;
             }
 
-            .vintage-corner.top-left { top: 8px !important; left: 8px !important; }
-            .vintage-corner.top-right { top: 8px !important; right: 8px !important; }
-            .vintage-corner.bottom-left { bottom: 8px !important; left: 8px !important; }
-            .vintage-corner.bottom-right { bottom: 8px !important; right: 8px !important; }
+            .vintage-corner.top-left {
+                top: 8px !important;
+                left: 8px !important;
+            }
+
+            .vintage-corner.top-right {
+                top: 8px !important;
+                right: 8px !important;
+            }
+
+            .vintage-corner.bottom-left {
+                bottom: 8px !important;
+                left: 8px !important;
+            }
+
+            .vintage-corner.bottom-right {
+                bottom: 8px !important;
+                right: 8px !important;
+            }
 
             .hero-title-block h1 {
                 font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
@@ -748,7 +768,7 @@
             }
 
             /* Hero avatar sizing on mobile */
-            .vintage-hero .torn-paper > div:first-child {
+            .vintage-hero .torn-paper>div:first-child {
                 width: 160px !important;
                 height: 200px !important;
                 margin: 0 auto !important;
@@ -756,12 +776,12 @@
             }
 
             /* Hero bio text */
-            .vintage-hero .torn-paper > div:last-child {
+            .vintage-hero .torn-paper>div:last-child {
                 min-width: unset !important;
                 text-align: left !important;
             }
 
-            .vintage-hero .torn-paper > div:last-child p {
+            .vintage-hero .torn-paper>div:last-child p {
                 font-size: 0.95rem !important;
                 line-height: 1.7 !important;
             }
@@ -822,13 +842,13 @@
                 text-align: center !important;
             }
 
-            #github .journal-page > div:first-child {
+            #github .journal-page>div:first-child {
                 width: 80px !important;
                 height: 100px !important;
                 margin: 0 auto !important;
             }
 
-            #github .journal-page > div:last-child {
+            #github .journal-page>div:last-child {
                 text-align: center !important;
             }
 
@@ -1031,8 +1051,10 @@
             align-items: center;
             border: 3px solid rgba(62, 47, 36, 0.2);
             background-color: #d1c0a8;
-            margin: 100px auto 2rem auto; /* Auto margin centers it perfectly */
-            max-width: 95%; /* Ensures it doesn't touch the edges */
+            margin: 100px auto 2rem auto;
+            /* Auto margin centers it perfectly */
+            max-width: 95%;
+            /* Ensures it doesn't touch the edges */
             border-radius: 4px;
         }
 
@@ -1076,7 +1098,8 @@
             position: relative;
             z-index: 5;
             text-align: center;
-            margin-top: 2rem; /* Reduced from 150px */
+            margin-top: 2rem;
+            /* Reduced from 150px */
         }
 
         .hero-title-block h1 {
@@ -1255,40 +1278,41 @@
                 </details>
             </div>
 
-        <!-- AI & Analytics Column -->
-        <div class="project-column" style="display: flex; flex-direction: column;">
-            <h3
-                style="color: var(--accent-terra); margin-bottom: 2rem; border-bottom: 1px dashed var(--accent-gold); padding-bottom: 0.5rem; text-align: center;">
-                AI & Business Analytics</h3>
+            <!-- AI & Analytics Column -->
+            <div class="project-column" style="display: flex; flex-direction: column;">
+                <h3
+                    style="color: var(--accent-terra); margin-bottom: 2rem; border-bottom: 1px dashed var(--accent-gold); padding-bottom: 0.5rem; text-align: center;">
+                    AI & Business Analytics</h3>
 
-            <div class="projects-grid" style="display: flex; flex-direction: column; gap: 3rem; flex: 1;">
+                <div class="projects-grid" style="display: flex; flex-direction: column; gap: 3rem; flex: 1;">
 
-                <!-- New Customer Churn Project -->
-                <div class="polaroid-card fade-up">
-                    <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%) rotate(1deg);"></div>
-                    <div class="polaroid-img-placeholder" style="color: var(--accent-terra);">📈</div>
-                    <div class="polaroid-content">
-                        <h3>Customer Churn Analysis</h3>
-                        <div style="text-align: left; margin-bottom: 1rem; color: var(--text-dark);">
-                            <p>• Regression-based customer churn analysis using business forecasting techniques.</p>
-                            <p>• Analyzed IBM Telco dataset to uncover key retention drivers.</p>
-                            <p>• Built Logistic Regression model achieving 0.84 ROC-AUC.</p>
+                    <!-- New Customer Churn Project -->
+                    <div class="polaroid-card fade-up">
+                        <div class="tape" style="top: -15px; left: 50%; transform: translateX(-50%) rotate(1deg);">
                         </div>
-                        <p style="font-style: italic; margin-bottom: 1rem;">
-                            <a href="https://github.com/payaljarviya/customer-churn-analysis" target="_blank"
-                                style="color: var(--accent-terra); text-decoration: underline;">View on GitHub</a>
-                        </p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Scikit-learn</span>
-                            <span class="tag">Pandas</span>
+                        <div class="polaroid-img-placeholder" style="color: var(--accent-terra);">📈</div>
+                        <div class="polaroid-content">
+                            <h3>Customer Churn Analysis</h3>
+                            <div style="text-align: left; margin-bottom: 1rem; color: var(--text-dark);">
+                                <p>• Regression-based customer churn analysis using business forecasting techniques.</p>
+                                <p>• Analyzed IBM Telco dataset to uncover key retention drivers.</p>
+                                <p>• Built Logistic Regression model achieving 0.84 ROC-AUC.</p>
+                            </div>
+                            <p style="font-style: italic; margin-bottom: 1rem;">
+                                <a href="https://github.com/payaljarviya/customer-churn-analysis" target="_blank"
+                                    style="color: var(--accent-terra); text-decoration: underline;">View on GitHub</a>
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Scikit-learn</span>
+                                <span class="tag">Pandas</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <details style="margin-top: 1rem;">
-                <summary
+                <details style="margin-top: 1rem;">
+                    <summary
                         style="cursor: pointer; color: var(--text-light); outline: none; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
                         ► Old Projects (Click to see)</summary>
                     <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 2rem;">
@@ -1385,7 +1409,7 @@
                     <h3 style="margin-bottom: 0.2rem; color: var(--accent-terra);">
                         @payaljarviya</h3>
                     <p style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.4;">
-                        Data Science, Analytics & Forecasting Repositories</p>
+                        Analytics & Forecasting Repositories</p>
                     <a href="https://github.com/payaljarviya" target="_blank"
                         style="display: inline-block; padding: 0.6rem 1.2rem; border: 1px solid var(--accent-olive); color: var(--accent-olive); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">Explore
                         GitHub</a>
@@ -1508,22 +1532,34 @@
             <h2>Beyond the Classroom</h2>
         </div>
 
-        <div class="beyond-grid fade-up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 1000px; margin: 0 auto;">
+        <div class="beyond-grid fade-up"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 1000px; margin: 0 auto;">
 
             <!-- Card 1: Nochus Cookie Storyhouse -->
             <div class="torn-paper" style="padding: 2rem; position: relative;">
                 <div style="font-size: 2rem; margin-bottom: 0.8rem;">📚</div>
                 <h3 style="color: var(--accent-terra); margin-bottom: 0.5rem;">Nochus Cookie Storyhouse</h3>
-                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">An independent publishing venture on Amazon KDP focused on exploring writing and storytelling using AI across all genres. Managing end-to-end brand development, AI-assisted content creation, and global digital distribution.</p>
+                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">An independent publishing
+                    venture on Amazon KDP focused on exploring writing and storytelling using AI across all genres.
+                    Managing end-to-end brand development, AI-assisted content creation, and global digital
+                    distribution.</p>
                 <div class="tags">
                     <span class="tag">Publishing</span>
                     <span class="tag">Amazon KDP</span>
                     <span class="tag">Brand Building</span>
                 </div>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="https://amazon.com/author/payaljarviya" target="_blank" style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--text-dark); color: var(--text-dark); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--text-dark)'; this.style.color='#eadecd'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--text-dark)'" title="Payal Jarviya Author Profile on Amazon">👤 Author Profile</a>
-                    
-                    <a href="https://www.youtube.com/@NochusCookieStoryhouse" target="_blank" style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'" title="Nochus Cookie Storyhouse YouTube Channel">📺 YouTube Channel</a>
+                    <a href="https://amazon.com/author/payaljarviya" target="_blank"
+                        style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--text-dark); color: var(--text-dark); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--text-dark)'; this.style.color='#eadecd'"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--text-dark)'"
+                        title="Payal Jarviya Author Profile on Amazon">👤 Author Profile</a>
+
+                    <a href="https://www.youtube.com/@NochusCookieStoryhouse" target="_blank"
+                        style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'"
+                        title="Nochus Cookie Storyhouse YouTube Channel">📺 YouTube Channel</a>
                 </div>
             </div>
 
@@ -1531,14 +1567,20 @@
             <div class="torn-paper" style="padding: 2rem; position: relative;">
                 <div style="font-size: 2rem; margin-bottom: 0.8rem;">🎬</div>
                 <h3 style="color: var(--accent-terra); margin-bottom: 0.5rem;">AI Filmmaking & Creative Technology</h3>
-                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">Experimenting with generative AI tools to produce short films. Recent concepts include <em>"The Clockwork Oracle"</em> — exploring storytelling at the intersection of history and technology using Google Flow and CapCut.</p>
+                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">Experimenting with generative
+                    AI tools to produce short films. Recent concepts include <em>"The Clockwork Oracle"</em> — exploring
+                    storytelling at the intersection of history and technology using Google Flow and CapCut.</p>
                 <div class="tags">
                     <span class="tag">Google Flow</span>
                     <span class="tag">CapCut</span>
                     <span class="tag">Storytelling</span>
                 </div>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="https://youtu.be/J2PJ-dReJRs" target="_blank" style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'" title="Watch The Clockwork Oracle">🎬 Watch "The Clockwork Oracle"</a>
+                    <a href="https://youtu.be/J2PJ-dReJRs" target="_blank"
+                        style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'"
+                        title="Watch The Clockwork Oracle">🎬 Watch "The Clockwork Oracle"</a>
                 </div>
             </div>
 
@@ -1546,17 +1588,27 @@
             <div class="torn-paper" style="padding: 2rem; position: relative;">
                 <div style="font-size: 2rem; margin-bottom: 0.8rem;">🎓</div>
                 <h3 style="color: var(--accent-terra); margin-bottom: 0.5rem;">AWS AI & ML Scholars Nanodegree</h3>
-                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">Completed a rigorous AI and machine learning program covering supervised learning, deep learning, and model deployment, awarded under the AWS AI & ML Scholarship via Udacity.</p>
+                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">Completed a rigorous AI and
+                    machine learning program covering supervised learning, deep learning, and model deployment, awarded
+                    under the AWS AI & ML Scholarship via Udacity.</p>
                 <div class="tags">
                     <span class="tag">AWS</span>
                     <span class="tag">Deep Learning</span>
                     <span class="tag">Udacity</span>
                 </div>
-                
+
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="Udacity Nanodegree Certification.jpg" target="_blank" style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'">📄 View Certificate</a>
-                    
-                    <a href="Udacity AI Practioner badge.png" target="_blank" style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-olive); color: var(--accent-olive); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-olive)'; this.style.color='#eadecd'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-olive)'">🏅 View Badge</a>
+                    <a href="Udacity Nanodegree Certification.jpg" target="_blank"
+                        style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'">📄
+                        View Certificate</a>
+
+                    <a href="Udacity AI Practioner badge.png" target="_blank"
+                        style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-olive); color: var(--accent-olive); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-olive)'; this.style.color='#eadecd'"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-olive)'">🏅
+                        View Badge</a>
                 </div>
             </div>
 
@@ -1565,14 +1617,20 @@
             <div class="torn-paper" style="padding: 2rem; position: relative;">
                 <div style="font-size: 2rem; margin-bottom: 0.8rem;">⚙️</div>
                 <h3 style="color: var(--accent-terra); margin-bottom: 0.5rem;">AI Productivity Workflow Builder</h3>
-                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">Built an automated job search and task management pipeline using Claude (Cowork) with a micro-task architecture, demonstrating applied AI for personal productivity and process automation.</p>
+                <p style="color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem;">Built an automated job search
+                    and task management pipeline using Claude (Cowork) with a micro-task architecture, demonstrating
+                    applied AI for personal productivity and process automation.</p>
                 <div class="tags">
                     <span class="tag">Claude AI</span>
                     <span class="tag">Automation</span>
                     <span class="tag">Productivity</span>
                 </div>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="ai_workflow_architecture.html" target="_blank" style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'" title="View System Architecture Diagram">📊 View Architecture</a>
+                    <a href="ai_workflow_architecture.html" target="_blank"
+                        style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--accent-terra); color: var(--accent-terra); text-decoration: none; border-radius: 3px; font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-terra)'; this.style.color='#eadecd'"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terra)'"
+                        title="View System Architecture Diagram">📊 View Architecture</a>
                 </div>
             </div>
 
