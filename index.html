@@ -642,6 +642,7 @@
             border-bottom-color: var(--accent-terra);
         }
 
+        /* ===== TABLET BREAKPOINT ===== */
         @media (max-width: 900px) {
 
             .experience-grid,
@@ -658,7 +659,269 @@
 
             .nav-links {
                 display: none;
-                /* simple mobile nav approach for now */
+            }
+        }
+
+        /* ===== MOBILE BREAKPOINT ===== */
+        @media (max-width: 600px) {
+
+            /* --- Global spacing --- */
+            section {
+                padding: 2rem 4% !important;
+            }
+
+            /* --- Navigation --- */
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* --- Typography scaling --- */
+            .section-header h2,
+            section>h2,
+            .contact h2 {
+                font-size: 1.7rem !important;
+            }
+
+            h3 {
+                font-size: 1.3rem !important;
+            }
+
+            h4 {
+                font-size: 1.1rem !important;
+            }
+
+            p, li, .tag, .job-meta, .date, .stamp-text {
+                font-size: 1rem !important;
+            }
+
+            .handwriting {
+                font-size: 1.4rem !important;
+            }
+
+            .title {
+                font-size: clamp(1.5rem, 6vw, 2.2rem) !important;
+            }
+
+            .subtitle {
+                font-size: 0.8rem !important;
+                letter-spacing: 2px !important;
+            }
+
+            /* --- Hero Section --- */
+            .vintage-hero {
+                margin: 80px auto 1.5rem auto !important;
+                padding: 3vh 0.8rem 5vh 0.8rem !important;
+                min-height: 40vh !important;
+                max-width: 96% !important;
+            }
+
+            .vintage-corner {
+                width: 60px !important;
+                height: 60px !important;
+            }
+
+            .vintage-corner.top-left { top: 8px !important; left: 8px !important; }
+            .vintage-corner.top-right { top: 8px !important; right: 8px !important; }
+            .vintage-corner.bottom-left { bottom: 8px !important; left: 8px !important; }
+            .vintage-corner.bottom-right { bottom: 8px !important; right: 8px !important; }
+
+            .hero-title-block h1 {
+                font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+                letter-spacing: 1px !important;
+            }
+
+            .hero-title-block p {
+                font-size: 0.85rem !important;
+                margin-top: 1rem !important;
+            }
+
+            /* Hero bio card — stack image above text */
+            .vintage-hero .torn-paper {
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+                padding: 1.5rem !important;
+                margin-top: 1.5rem !important;
+            }
+
+            /* Hero avatar sizing on mobile */
+            .vintage-hero .torn-paper > div:first-child {
+                width: 160px !important;
+                height: 200px !important;
+                margin: 0 auto !important;
+                transform: rotate(0deg) !important;
+            }
+
+            /* Hero bio text */
+            .vintage-hero .torn-paper > div:last-child {
+                min-width: unset !important;
+                text-align: left !important;
+            }
+
+            .vintage-hero .torn-paper > div:last-child p {
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
+            }
+
+            /* --- Experience Section --- */
+            .experience-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            .journal-page {
+                padding: 1.5rem !important;
+            }
+
+            .job-desc li {
+                padding-left: 1.2rem !important;
+                margin-bottom: 0.8rem !important;
+                font-size: 0.95rem !important;
+            }
+
+            .job-meta {
+                font-size: 0.85rem !important;
+                margin-bottom: 1.2rem !important;
+            }
+
+            /* --- Projects Section --- */
+            .projects-split {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .projects-grid {
+                gap: 2rem !important;
+            }
+
+            .polaroid-card {
+                padding: 12px 12px 30px 12px !important;
+            }
+
+            .polaroid-content h3 {
+                font-size: 1.2rem !important;
+            }
+
+            .polaroid-content p {
+                font-size: 0.95rem !important;
+            }
+
+            .tag {
+                font-size: 0.75rem !important;
+                padding: 0.15rem 0.5rem !important;
+            }
+
+            /* --- GitHub Section --- */
+            #github .journal-page {
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+                padding: 1.5rem !important;
+                text-align: center !important;
+            }
+
+            #github .journal-page > div:first-child {
+                width: 80px !important;
+                height: 100px !important;
+                margin: 0 auto !important;
+            }
+
+            #github .journal-page > div:last-child {
+                text-align: center !important;
+            }
+
+            /* --- Skills Section --- */
+            .sticky-board {
+                padding: 1.5rem !important;
+            }
+
+            .sticky-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .sticky-note {
+                padding: 1.2rem !important;
+            }
+
+            .sticky-note h4 {
+                font-size: 1.05rem !important;
+            }
+
+            .sticky-note p {
+                font-size: 0.9rem !important;
+            }
+
+            /* --- Education Section --- */
+            .edu-ticket {
+                padding: 1.5rem 1.2rem !important;
+            }
+
+            /* Hide the circular cutout pseudo-elements on mobile — they overflow */
+            .edu-ticket::before,
+            .edu-ticket::after {
+                display: none !important;
+            }
+
+            .torn-paper {
+                padding: 1.5rem !important;
+            }
+
+            .torn-paper ul {
+                margin-left: 1rem !important;
+            }
+
+            .torn-paper li {
+                font-size: 0.95rem !important;
+                margin-bottom: 0.4rem !important;
+            }
+
+            /* --- Contact Section --- */
+            .contact {
+                padding: 2rem 4% !important;
+            }
+
+            .contact .torn-paper {
+                padding: 1.5rem !important;
+            }
+
+            .contact-links {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 1rem !important;
+            }
+
+            .contact-link {
+                font-size: 0.95rem !important;
+                word-break: break-word !important;
+            }
+
+            .stamp {
+                width: 80px !important;
+                height: 80px !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .stamp-text {
+                font-size: 0.7rem !important;
+            }
+
+            /* --- Stat cards --- */
+            .stat-card {
+                max-width: 100% !important;
+            }
+
+            .stat-card:nth-child(1),
+            .stat-card:nth-child(2),
+            .stat-card:nth-child(3) {
+                transform: none !important;
+            }
+
+            /* --- Details / Old Projects --- */
+            details summary {
+                font-size: 0.95rem !important;
             }
         }
 
